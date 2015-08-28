@@ -1019,11 +1019,11 @@ class VIVirtualMachine(VIManagedEntity):
     #--------------------------#
     #-- GUEST AUTHENTICATION --#
     #--------------------------#
-    def login_in_guest(self, user, password):
+    def login_in_guest(self, user, password, interactive=False):
         """Authenticates in the guest with the acquired credentials for use in 
         subsequent guest operation calls."""
         auth = VI.ns0.NamePasswordAuthentication_Def("NameAndPwd").pyclass()
-        auth.set_element_interactiveSession(False)
+        auth.set_element_interactiveSession(interactive)
         auth.set_element_username(user)
         auth.set_element_password(password)
         self.__validate_authentication(auth)
